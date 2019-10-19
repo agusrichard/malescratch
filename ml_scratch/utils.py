@@ -1,0 +1,87 @@
+import numpy as np
+
+
+def train_test_split(*arrays, test_ratio=0.1, random_state=42):
+
+    """Split the data onto train set and test set. The function shuffle the data 
+    before splitting it
+
+    Parameters:
+    ----------
+
+    *arrays: array-like
+        Sequence of indexables with same length / shape[0]
+
+    test_ratio : float, between 0 and 1
+        Percentage of test set 
+
+    random_state : integer
+        Random state seed
+
+    Returns:
+    -------
+
+    splitting : list, length=2 * len(arrays)
+        List containing train-test split of inputs.
+    
+    """
+
+
+    np.random.seed(random_state)
+    index = np.random.permutation(np.arange(len(arrays[0])))
+    test_size = int(len(arrays[0])*test_ratio)
+
+    def wrapper():
+        for element in arrays:
+            test_index = index[:test_size]
+            train_index = index[test_size:]
+            test = element[test_index]
+            train = element[train_index]
+            yield train
+            yield test
+
+    return tuple(wrapper())
+
+
+# ======================================================================================================================\
+
+def make_batch_index(sample_size, num_batch, size, shuffle=False, random_state=42):
+    """Make batch index for further batch making process
+
+    Parameters:
+    ----------
+
+    sample_size : integer 
+        Sample size
+
+    num_batch : integer
+        Number of batch
+
+    size : integer
+        sample size will be created
+    
+    shuffle : boolean
+        If True, using permutation to create index.
+        If False, using arange to create index 
+
+    random_state : integer
+        Random state seed
+
+    Returns:
+        Batch index
+    
+    """
+
+
+    gen = np.random.RandomState(random_state)
+    if sample_size == size:
+        if shuffle:
+            index_batch = np.array_split(gen.permutation(sample_size), num_batch)
+        else:
+            index_batch = np.array_split(np.arange(sample_size), num_batch)
+    elif num_batch <= size:
+        index_batch = np.array_split(gen.randint(0, sample_size, size=size), num_batch)
+    else:
+        raise ValueError("Size must be higher than number of batch")
+    
+    return index_batch
