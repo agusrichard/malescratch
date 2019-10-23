@@ -2,8 +2,7 @@ import numpy as np
 
 
 def train_test_split(*arrays, test_ratio=0.1, random_state=42):
-
-    """Split the data onto train set and test set. The function shuffle the data 
+     """Split the data onto train set and test set. The function shuffle the data 
     before splitting it
 
     Parameters:
@@ -43,7 +42,7 @@ def train_test_split(*arrays, test_ratio=0.1, random_state=42):
     return tuple(wrapper())
 
 
-# ======================================================================================================================\
+# ======================================================================================================================
 
 def make_batch_index(sample_size, num_batch, size, shuffle=False, random_state=42):
     """Make batch index for further batch making process
@@ -85,3 +84,68 @@ def make_batch_index(sample_size, num_batch, size, shuffle=False, random_state=4
         raise ValueError("Size must be higher than number of batch")
     
     return index_batch
+
+
+# ======================================================================================================================
+
+class MinMaxScaler(object):
+    """ Scaling the data to between 0 and 1 """
+
+    def __init__(self):
+        pass
+    
+    def fit(self, X):
+        self.min_ = X.min(axis=0)
+        self.max_ = X.max(axis=0)
+
+        return self
+
+    def transform(self, X):
+        diff_X = X - self.min_
+        diff_minmax = self.max_ - self.min_
+
+        return diff_X / diff_minmax
+    
+    def fit_transform(self, X):
+        self.fit(X)
+        return self.transform(X)
+
+
+# ======================================================================================================================
+
+class StandardScaler(object):
+    """ Standardize the data """
+    
+    def __init__(self):
+        pass
+    
+    def fit(self, X):
+        self.mean_ = X.mean(axis=0)
+        self.stddev_ = X.std(axis=0)
+
+        return self
+
+    def transform(self, X):
+        diff_mean = X - self.mean_
+
+        return diff_mean / self.stddev_
+    
+    def fit_transform(self, X):
+        self.fit(X)
+        return self.transform(X)
+
+
+# ======================================================================================================================
+
+def to_categorical(labels):
+
+    sample = len(labels)
+    cols = np.max(labels) + 1
+    result = np.zeros(shape=(sample, cols))
+    for i, row in enumerate(result):
+        row[labels[i]] = 1
+    
+    return result
+
+
+

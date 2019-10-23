@@ -1,4 +1,5 @@
 import numpy as np 
+from utils import calculate_gradient, calculate
 
 
 class GradientDescentRegressor():
@@ -15,11 +16,11 @@ class GradientDescentRegressor():
     Attributes:
     ----------
 
-    coef_ : array, shape (1, n_features) if n_classes == 2 else (n_classes,\
+    weights_ : array, shape (1, n_features) if n_classes == 2 else (n_classes,\
     n_features)
     Weights assigned to the features.
 
-    intercept_ : array, shape (1,) if n_classes == 2 else (n_classes,)
+    bias_ : array, shape (1,) if n_classes == 2 else (n_classes,)
     Constants in decision function.
 
     """
@@ -42,8 +43,8 @@ class GradientDescentRegressor():
         bias_ = np.random.randn(1)
         
         for step in range(self.step):
-            weights_ = weights_ - (self.learning_rate * GradientDescentRegressor._calculate_gradient(X, y))
-            bias_ = bias_ - (self.learning_rate * GradientDescentRegressor._calculate_bias())
+            weights_ = weights_ - (self.learning_rate * self._calculate_gradient(X, y))
+            bias_ = bias_ - (self.learning_rate * self._calculate_bias())
 
         return self
 
