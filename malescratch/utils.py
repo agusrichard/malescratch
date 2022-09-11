@@ -1,4 +1,4 @@
-import numpy as np
+import numpy as np 
 
 
 def train_test_split(*arrays, test_ratio=0.1, random_state=42):
