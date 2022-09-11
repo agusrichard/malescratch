@@ -1,8 +1,8 @@
-import numpy as np 
+import numpy as np
 from utils import calculate_gradient, calculate
 
 
-class GradientDescentRegressor():
+class GradientDescentRegressor:
 
     """Imitation of LinearRegression estimator from sklearn.
     It doesn't take any parameters or hyperparameters. 
@@ -28,7 +28,6 @@ class GradientDescentRegressor():
     weights_ = 0
     bias_ = 0
 
-
     def __init__(self, learning_rate=0.1, step=10):
 
         self.learning_rate = learning_rate
@@ -41,13 +40,12 @@ class GradientDescentRegressor():
 
         weights_ = np.random.randn(X.shape[1])
         bias_ = np.random.randn(1)
-        
+
         for step in range(self.step):
             weights_ = weights_ - (self.learning_rate * self._calculate_gradient(X, y))
             bias_ = bias_ - (self.learning_rate * self._calculate_bias())
 
         return self
-
 
     def predict(self, X):
         y_pred = np.matmul(X, weights_) + bias_
@@ -71,13 +69,9 @@ class GradientDescentRegressor():
         for j in range(X.shape[0]):
             gradient = gradient + (np.matmul(X[j], weights_) - y[j])
         return gradient / X.shape[0]
-    
+
     def get_weights(self):
         return weights_
 
     def get_bias(self):
         return bias_
-
-
-
-        

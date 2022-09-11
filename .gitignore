@@ -4,3 +4,4 @@ __pycache__
 .DS_Store
 .idea/
 playground/.idea/
+.pytest_cache

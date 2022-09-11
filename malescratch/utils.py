@@ -1,8 +1,8 @@
-import numpy as np 
+import numpy as np
 
 
 def train_test_split(*arrays, test_ratio=0.1, random_state=42):
-     """Split the data onto train set and test set. The function shuffle the data 
+    """Split the data onto train set and test set. The function shuffle the data
     before splitting it
 
     Parameters:
@@ -12,7 +12,7 @@ def train_test_split(*arrays, test_ratio=0.1, random_state=42):
         Sequence of indexables with same length / shape[0]
 
     test_ratio : float, between 0 and 1
-        Percentage of test set 
+        Percentage of test set
 
     random_state : integer
         Random state seed
@@ -22,13 +22,12 @@ def train_test_split(*arrays, test_ratio=0.1, random_state=42):
 
     splitting : list, length=2 * len(arrays)
         List containing train-test split of inputs.
-    
-    """
 
+    """
 
     np.random.seed(random_state)
     index = np.random.permutation(np.arange(len(arrays[0])))
-    test_size = int(len(arrays[0])*test_ratio)
+    test_size = int(len(arrays[0]) * test_ratio)
 
     def wrapper():
         for element in arrays:
@@ -44,13 +43,14 @@ def train_test_split(*arrays, test_ratio=0.1, random_state=42):
 
 # ======================================================================================================================
 
+
 def make_batch_index(sample_size, num_batch, size, shuffle=False, random_state=42):
     """Make batch index for further batch making process
 
     Parameters:
     ----------
 
-    sample_size : integer 
+    sample_size : integer
         Sample size
 
     num_batch : integer
@@ -58,19 +58,18 @@ def make_batch_index(sample_size, num_batch, size, shuffle=False, random_state=4
 
     size : integer
         sample size will be created
-    
+
     shuffle : boolean
         If True, using permutation to create index.
-        If False, using arange to create index 
+        If False, using arange to create index
 
     random_state : integer
         Random state seed
 
     Returns:
         Batch index
-    
-    """
 
+    """
 
     gen = np.random.RandomState(random_state)
     if sample_size == size:
@@ -82,18 +81,19 @@ def make_batch_index(sample_size, num_batch, size, shuffle=False, random_state=4
         index_batch = np.array_split(gen.randint(0, sample_size, size=size), num_batch)
     else:
         raise ValueError("Size must be higher than number of batch")
-    
+
     return index_batch
 
 
 # ======================================================================================================================
 
+
 class MinMaxScaler(object):
-    """ Scaling the data to between 0 and 1 """
+    """Scaling the data to between 0 and 1"""
 
     def __init__(self):
         pass
-    
+
     def fit(self, X):
         self.min_ = X.min(axis=0)
         self.max_ = X.max(axis=0)
@@ -105,7 +105,7 @@ class MinMaxScaler(object):
         diff_minmax = self.max_ - self.min_
 
         return diff_X / diff_minmax
-    
+
     def fit_transform(self, X):
         self.fit(X)
         return self.transform(X)
@@ -113,12 +113,13 @@ class MinMaxScaler(object):
 
 # ======================================================================================================================
 
+
 class StandardScaler(object):
-    """ Standardize the data """
-    
+    """Standardize the data"""
+
     def __init__(self):
         pass
-    
+
     def fit(self, X):
         self.mean_ = X.mean(axis=0)
         self.stddev_ = X.std(axis=0)
@@ -129,13 +130,14 @@ class StandardScaler(object):
         diff_mean = X - self.mean_
 
         return diff_mean / self.stddev_
-    
+
     def fit_transform(self, X):
         self.fit(X)
         return self.transform(X)
 
 
 # ======================================================================================================================
+
 
 def to_categorical(labels):
 
@@ -144,8 +146,5 @@ def to_categorical(labels):
     result = np.zeros(shape=(sample, cols))
     for i, row in enumerate(result):
         row[labels[i]] = 1
-    
+
     return result
-
-
-

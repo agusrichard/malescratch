@@ -21,7 +21,6 @@ def mean_absolute_error(predictions, labels):
 
     """
 
-
     if len(predictions) == len(labels):
         return np.sum(np.abs(predictions - labels)) / len(labels)
     else:
@@ -29,6 +28,7 @@ def mean_absolute_error(predictions, labels):
 
 
 # ======================================================================================================================
+
 
 def mean_absolute_percentage_error(predictions, labels):
 
@@ -54,15 +54,18 @@ def mean_absolute_percentage_error(predictions, labels):
     """
 
     if len(predictions) == len(labels):
-        return np.sum(np.abs((labels - predictions) / labels)) * (100 / len(predictions))
+        return np.sum(np.abs((labels - predictions) / labels)) * (
+            100 / len(predictions)
+        )
     else:
         raise ValueError("The length of predictions and labels are not the same")
 
 
 # ======================================================================================================================
 
+
 def mean_squared_error(predictions, labels):
-    
+
     """Calculate Mean Squared Error between predictions and labels.
 
     Parameters:
@@ -89,6 +92,7 @@ def mean_squared_error(predictions, labels):
 
 # ======================================================================================================================
 
+
 def root_mean_square_error(predictions, labels):
 
     """Calculate Root Mean Squared Error between predictions and labels.
@@ -108,7 +112,6 @@ def root_mean_square_error(predictions, labels):
     ValueError: get raised when the length of predictions and labels are not the same
 
     """
-    
 
     if len(predictions) == len(labels):
         return np.sqrt(np.sum(np.power(labels - predictions, 2)) / len(predictions))
@@ -117,6 +120,7 @@ def root_mean_square_error(predictions, labels):
 
 
 # ======================================================================================================================
+
 
 def r2_score(predictions, labels):
 
@@ -137,7 +141,7 @@ def r2_score(predictions, labels):
     ValueError: get raised when the length of predictions and labels are not the same
 
     """
-    
+
     if len(predictions) == len(labels):
         ybar = np.mean(labels)
         sres = np.sum(np.power(labels - predictions, 2))
@@ -148,6 +152,7 @@ def r2_score(predictions, labels):
 
 
 # ======================================================================================================================
+
 
 def adjusted_r2_score(predictions, labels, num_features):
 
@@ -168,7 +173,6 @@ def adjusted_r2_score(predictions, labels, num_features):
     ValueError: get raised when the length of predictions and labels are not the same
 
     """
-    
 
     def r2_score(predictions, labels):
         if len(predictions) == len(labels):
@@ -184,10 +188,11 @@ def adjusted_r2_score(predictions, labels, num_features):
     k = num_features
     cons = (n - 1) / (n - (k + 1))
 
-    return 1 - (1 - r2)*cons
+    return 1 - (1 - r2) * cons
 
 
 # ======================================================================================================================
+
 
 def max_error(predictions, labels):
 
@@ -217,6 +222,7 @@ def max_error(predictions, labels):
 
 # ======================================================================================================================
 
+
 def mean_squared_log_error(predictions, labels):
 
     """Calculate Mean Squared Logarithmic Error between predictions and labels.
@@ -241,12 +247,12 @@ def mean_squared_log_error(predictions, labels):
 
     if len(predictions) == len(labels):
         if (predictions < 0).any() or (labels < 0).any():
-            raise ValueError("Mean Squared Logarithmic Error cannot be used when targets contain negative values")
+            raise ValueError(
+                "Mean Squared Logarithmic Error cannot be used when targets contain negative values"
+            )
         else:
             log_labels = np.log(1 + labels)
             log_preds = np.log(1 + predictions)
             return np.sum(np.power(log_labels - log_preds, 2)) / len(predictions)
     else:
         raise ValueError("The length of predictions and labels are not the same")
-
-

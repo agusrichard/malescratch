@@ -1,7 +1,6 @@
 import numpy as np
 
 
-
 def accuracy_score(predictions, labels):
 
     """Calculate the accuracy score between predictions and labels. \
@@ -22,7 +21,6 @@ def accuracy_score(predictions, labels):
     ValueError: raise value error when the length of predictions and labels are not the same
 
     """
-
 
     if len(predictions) == len(labels):
         return np.sum(np.equal(predictions, labels)) / len(predictions)
