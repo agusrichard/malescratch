@@ -41,9 +41,6 @@ def train_test_split(*arrays, test_ratio=0.1, random_state=42):
     return tuple(wrapper())
 
 
-# ======================================================================================================================
-
-
 def make_batch_index(sample_size, num_batch, size, shuffle=False, random_state=42):
     """Make batch index for further batch making process
 
@@ -85,9 +82,6 @@ def make_batch_index(sample_size, num_batch, size, shuffle=False, random_state=4
     return index_batch
 
 
-# ======================================================================================================================
-
-
 class MinMaxScaler(object):
     """Scaling the data to between 0 and 1"""
 
@@ -111,9 +105,6 @@ class MinMaxScaler(object):
         return self.transform(X)
 
 
-# ======================================================================================================================
-
-
 class StandardScaler(object):
     """Standardize the data"""
 
@@ -134,9 +125,6 @@ class StandardScaler(object):
     def fit_transform(self, X):
         self.fit(X)
         return self.transform(X)
-
-
-# ======================================================================================================================
 
 
 def to_categorical(labels):

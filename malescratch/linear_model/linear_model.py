@@ -2,8 +2,6 @@ import numpy as np
 import math
 import MinMaxScaler, StandardScaler, make_batch_index, r2_score, to_categorical
 
-# ======================================================================================================================
-
 
 class l1_regularization:
     def __init__(self, alpha):
@@ -16,9 +14,6 @@ class l1_regularization:
         return self.alpha * np.sign(w)
 
 
-# ======================================================================================================================
-
-
 class l2_regularization:
     def __init__(self, alpha):
         self.alpha = alpha
@@ -28,9 +23,6 @@ class l2_regularization:
 
     def grad(self, w):
         return self.alpha * np.sum(w**2) * w
-
-
-# ======================================================================================================================
 
 
 class l1_l2_regularization:
@@ -51,9 +43,6 @@ class l1_l2_regularization:
         return self.alpha * (l1_contrib + l2_contrib)
 
 
-# ======================================================================================================================
-
-
 class Regression(object):
     def __init__(self):
         pass
@@ -67,9 +56,6 @@ class Regression(object):
         labels = y
 
         return r2_score(predictions, labels)
-
-
-# ======================================================================================================================
 
 
 class LinearRegression(Regression):
@@ -97,9 +83,6 @@ class LinearRegression(Regression):
         self.weights_ = self._weights.ravel()[1:]
         self.bias_ = self._weights[0]
         return self
-
-
-# ======================================================================================================================
 
 
 class BatchGDRegressor(Regression):
@@ -180,9 +163,6 @@ class BatchGDRegressor(Regression):
         return self
 
 
-# ======================================================================================================================
-
-
 class RidgeRegression(BatchGDRegressor):
     def __init__(
         self, num_batch=None, iterations=10000, learning_rate=0.001, alpha=0.0001
@@ -202,9 +182,6 @@ class RidgeRegression(BatchGDRegressor):
         return self
 
 
-# ======================================================================================================================
-
-
 class LassoRegression(BatchGDRegressor):
     def __init__(
         self, num_batch=None, iterations=10000, learning_rate=0.001, alpha=0.0001
@@ -222,9 +199,6 @@ class LassoRegression(BatchGDRegressor):
         super().fit(X, y)
 
         return self
-
-
-# ======================================================================================================================
 
 
 class ElasticNetRegression(BatchGDRegressor):
@@ -251,9 +225,6 @@ class ElasticNetRegression(BatchGDRegressor):
         return self
 
 
-# ======================================================================================================================
-
-
 class StochasticGDRegressor(BatchGDRegressor):
     def __init__(
         self,
@@ -277,9 +248,6 @@ class StochasticGDRegressor(BatchGDRegressor):
         super().fit(X, y)
 
         return self
-
-
-# ======================================================================================================================
 
 
 class LogisticRegression:
@@ -381,9 +349,6 @@ class LogisticRegression:
         labels = y
 
         return accuracy_score(predictions, labels)
-
-
-# ======================================================================================================================
 
 
 class SekardayuHanaPradiani:

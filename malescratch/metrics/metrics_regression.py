@@ -27,9 +27,6 @@ def mean_absolute_error(predictions, labels):
         raise ValueError("The length of predictions and labels are not the same")
 
 
-# ======================================================================================================================
-
-
 def mean_absolute_percentage_error(predictions, labels):
 
     """Calculate Mean Absolute Percentage Error between predictions and labels.
@@ -61,9 +58,6 @@ def mean_absolute_percentage_error(predictions, labels):
         raise ValueError("The length of predictions and labels are not the same")
 
 
-# ======================================================================================================================
-
-
 def mean_squared_error(predictions, labels):
 
     """Calculate Mean Squared Error between predictions and labels.
@@ -90,9 +84,6 @@ def mean_squared_error(predictions, labels):
         raise ValueError("The length of predictions and labels are not the same")
 
 
-# ======================================================================================================================
-
-
 def root_mean_square_error(predictions, labels):
 
     """Calculate Root Mean Squared Error between predictions and labels.
@@ -117,9 +108,6 @@ def root_mean_square_error(predictions, labels):
         return np.sqrt(np.sum(np.power(labels - predictions, 2)) / len(predictions))
     else:
         raise ValueError("The length of predictions and labels are not the same")
-
-
-# ======================================================================================================================
 
 
 def r2_score(predictions, labels):
@@ -149,9 +137,6 @@ def r2_score(predictions, labels):
         return 1 - (sres / stot)
     else:
         raise ValueError("The length of predictions and labels are not the same")
-
-
-# ======================================================================================================================
 
 
 def adjusted_r2_score(predictions, labels, num_features):
@@ -191,9 +176,6 @@ def adjusted_r2_score(predictions, labels, num_features):
     return 1 - (1 - r2) * cons
 
 
-# ======================================================================================================================
-
-
 def max_error(predictions, labels):
 
     """Calculate the maximum residual error (absolute) between predictions and labels.
@@ -218,9 +200,6 @@ def max_error(predictions, labels):
         return np.max(np.abs(labels - predictions))
     else:
         raise ValueError("The length of predictions and labels are not the same")
-
-
-# ======================================================================================================================
 
 
 def mean_squared_log_error(predictions, labels):
