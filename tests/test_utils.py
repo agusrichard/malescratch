@@ -1,2 +1,2 @@
 def test_something():
-    assert True
+    print("I really want to write some tests, but...")
