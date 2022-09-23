@@ -3,3 +3,4 @@ def test_something():
     print("I'll start this routine tomorrow. Wish me luck")
     print("I'll do that tomorrow. I promise")
     print("I hate myself today!")
+    print("I hurt myself today!")
