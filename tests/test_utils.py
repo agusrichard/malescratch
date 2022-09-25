@@ -7,3 +7,4 @@ def test_something():
     print(
         "This would be the last week of me being stupid. I'll make a (sort of) grand design tomorrow!"
     )
+    print("The mission of getting back on your feet so you can help yourself and others is started now!")
