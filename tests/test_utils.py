@@ -1,2 +1,9 @@
-def test_something():
-    print("I'm ready to write tests for let's create a plan to work on this")
+from malescratch.utils import train_test_split
+
+
+def test_positive_train_test_split():
+    pass
+
+
+def test_positive_make_batch_index():
+    pass
