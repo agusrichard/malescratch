@@ -13,3 +13,7 @@ def test_positive_train_test_split():
 
 def test_positive_make_batch_index():
     pass
+
+
+def test_to_categorical():
+    pass
