@@ -10,6 +10,7 @@ from malescratch.utils import (
 def test_positive_train_test_split():
     print("I need to make plan")
     print("I'm making plan tonight")
+    print("I've set you on my calendar. Congratulations!")
     pass
 
 
