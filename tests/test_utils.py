@@ -10,14 +10,14 @@ from malescratch.utils import (
 
 
 def test_positive_train_test_split():
-    X1 = np.random.randint(0, 10, size=(100, 10))
-    y1 = np.random.randint(0, 10, size=(100,))
-    X1_train, X1_test, y1_train, y1_test = train_test_split(X1, y1)
+    X = np.random.randint(0, 10, size=(100, 10))
+    y = np.random.randint(0, 10, size=(100,))
+    X_train, X_test, y_train, y_test = train_test_split(X, y)
 
-    assert type(X1_train) == np.ndarray
-    assert type(X1_test) == np.ndarray
-    assert type(y1_train) == np.ndarray
-    assert type(y1_test) == np.ndarray
+    assert type(X_train) == np.ndarray
+    assert type(X_test) == np.ndarray
+    assert type(y_train) == np.ndarray
+    assert type(y_test) == np.ndarray
 
 
 def test_positive_make_batch_index():
