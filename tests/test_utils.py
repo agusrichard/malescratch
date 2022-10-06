@@ -26,3 +26,7 @@ def test_positive_make_batch_index():
 
 def test_to_categorical():
     pass
+
+
+def test_MinMaxScaler():
+    pass
