@@ -9,7 +9,7 @@ from malescratch.utils import (
 )
 
 
-def test_positive_train_test_split():
+def test_positive_assert_type_train_test_split():
     X = np.random.randint(0, 10, size=(100, 10))
     y = np.random.randint(0, 10, size=(100,))
     X_train, X_test, y_train, y_test = train_test_split(X, y)
@@ -18,6 +18,10 @@ def test_positive_train_test_split():
     assert type(X_test) == np.ndarray
     assert type(y_train) == np.ndarray
     assert type(y_test) == np.ndarray
+
+
+def test_positive_assert_length_train_test_split():
+    pass
 
 
 def test_positive_make_batch_index():
