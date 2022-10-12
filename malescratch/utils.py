@@ -1,7 +1,10 @@
 import numpy as np
+from typing import Tuple, List
 
 
-def train_test_split(*arrays, test_ratio=0.1, random_state=42):
+def train_test_split(
+    *arrays: List[np.ndarray], test_ratio=0.1, random_state=42
+) -> Tuple[np.ndarray]:
     """Split the data onto train set and test set. The function shuffle the data
     before splitting it
 
@@ -25,8 +28,8 @@ def train_test_split(*arrays, test_ratio=0.1, random_state=42):
 
     """
 
-    np.random.seed(random_state)
-    index = np.random.permutation(np.arange(len(arrays[0])))
+    seed = np.random.RandomState(random_state)
+    index = seed.permutation(np.arange(len(arrays[0])))
     test_size = int(len(arrays[0]) * test_ratio)
 
     def wrapper():
