@@ -33,11 +33,12 @@ def train_test_split(
     test_size = int(len(arrays[0]) * test_ratio)
 
     def wrapper():
-        for element in arrays:
+        for array in arrays:
+            array = np.array(array)
             test_index = index[:test_size]
             train_index = index[test_size:]
-            test = element[test_index]
-            train = element[train_index]
+            test = array[test_index]
+            train = array[train_index]
             yield train
             yield test
 
