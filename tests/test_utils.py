@@ -46,6 +46,7 @@ def test_positive_check_all_numbers_exist():
 
 
 def test_negative_X_and_y_have_different_length():
+    print("do something if the array is at different length")
     pass
 
 
