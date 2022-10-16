@@ -45,9 +45,16 @@ def test_positive_check_all_numbers_exist():
     ), "y_train and y_test should have the same elements as X"
 
 
-def test_negative_X_and_y_have_different_length():
-    print("do something if the array is at different length")
-    pass
+def test_negative_shpuld_accept_list():
+    x = list(range(10))
+    x_train, x_test = train_test_split(x)
+
+    assert (
+        type(x_train) == np.ndarray
+    ), "train_test_split should accept list object and return np.ndarray object"
+    assert (
+        type(x_test) == np.ndarray
+    ), "train_test_split should accept list object and return np.ndarray object"
 
 
 def test_positive_make_batch_index():
