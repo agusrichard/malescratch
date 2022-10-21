@@ -58,7 +58,7 @@ def test_negative_shpuld_accept_list():
 
 
 def test_positive_make_batch_index():
-    print("What a lonely man!")
+    print("Let's explore the world instead")
     pass
 
 
