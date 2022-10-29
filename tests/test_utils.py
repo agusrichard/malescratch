@@ -62,6 +62,7 @@ def test_positive_make_batch_index():
     print("I'll be an explorer")
     print("I was demotivated, but not again")
     print("Good exercise man!")
+    print("Learn about life")
     pass
 
 
