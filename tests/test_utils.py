@@ -58,11 +58,6 @@ def test_negative_shpuld_accept_list():
 
 
 def test_positive_make_batch_index():
-    print("I need to create my own website")
-    print("I'll be an explorer")
-    print("I was demotivated, but not again")
-    print("Good exercise man!")
-    print("Learn about life")
     pass
 
 
