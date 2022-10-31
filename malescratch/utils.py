@@ -5,7 +5,7 @@ from typing import Tuple, List
 def train_test_split(
     *arrays: List[np.ndarray], test_ratio=0.1, random_state=42
 ) -> Tuple[np.ndarray]:
-    """Split the data onto train set and test set. The function shuffle the data
+    """Split the data into train set and test set. This function shuffle the data
     before splitting it
 
     Parameters:
@@ -25,7 +25,6 @@ def train_test_split(
 
     splitting : list, length=2 * len(arrays)
         List containing train-test split of inputs.
-
     """
 
     seed = np.random.RandomState(random_state)
@@ -69,7 +68,6 @@ def make_batch_index(sample_size, num_batch, size, shuffle=False, random_state=4
 
     Returns:
         Batch index
-
     """
 
     gen = np.random.RandomState(random_state)
