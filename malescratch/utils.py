@@ -88,7 +88,8 @@ class MinMaxScaler(object):
     """Scaling the data to between 0 and 1"""
 
     def __init__(self):
-        pass
+        self.min_ = None
+        self.max_ = None
 
     def fit(self, X):
         self.min_ = X.min(axis=0)
@@ -111,6 +112,9 @@ class StandardScaler(object):
     """Standardize the data"""
 
     def __init__(self):
+        self.something = None
+        self.mean_ = None
+        self.stddev_ = None
         pass
 
     def fit(self, X):
@@ -130,7 +134,6 @@ class StandardScaler(object):
 
 
 def to_categorical(labels):
-
     sample = len(labels)
     cols = np.max(labels) + 1
     result = np.zeros(shape=(sample, cols))
