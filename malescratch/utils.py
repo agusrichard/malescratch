@@ -115,7 +115,6 @@ class StandardScaler(object):
         self.something = None
         self.mean_ = None
         self.stddev_ = None
-        pass
 
     def fit(self, X):
         self.mean_ = X.mean(axis=0)
