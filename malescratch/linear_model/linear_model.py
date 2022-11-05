@@ -44,9 +44,6 @@ class l1_l2_regularization:
 
 
 class Regression(object):
-    def __init__(self):
-        pass
-
     def predict(self, X):
         X = np.c_[np.ones(X.shape[0]), X]
         return X.dot(self._weights)
