@@ -2,16 +2,16 @@ from scipy.linalg import inv
 import numpy as np
 
 
-class FullBatchLinearRegression():
-    
+class FullBatchLinearRegression:
+
     """Imitation of LinearRegression estimator from sklearn.
-    It doesn't take any parameters or hyperparameters. 
+    It doesn't take any parameters or hyperparameters.
     This estimator will use full-batch, which means that it uses
-    all the data points and makes it slow to process a lot of data 
+    all the data points and makes it slow to process a lot of data
     points.
 
 
-    Parameters: 
+    Parameters:
     ----------
     |------|
 
@@ -42,16 +42,12 @@ class FullBatchLinearRegression():
     score : parameters -> (X, y)
         X : array-like
             feature matrix
-        y : array-like 
+        y : array-like
             target vector
 
     """
 
-
-    def __init__(self):
-        pass
-
-    def train(self, X, y):  
+    def train(self, X, y):
         X = np.c_[np.ones(X.shape[0]), X]
         weights = inv(X.T.dot(X)).dot(X.T).dot(y)
         self.weights_ = weights[1:].ravel()
@@ -73,19 +69,20 @@ class FullBatchLinearRegression():
             raise ValueError("The length of predictions and labels are not the same")
 
 
-#======================================================================================================================
+# ======================================================================================================================
+
 
 class MiniBatchLinearRegression(FullBatchLinearRegression):
 
     """
     Imitation of LinearRegression estimator from sklearn.
-    It doesn't take any parameters or hyperparameters. 
+    It doesn't take any parameters or hyperparameters.
     This estimator will use full-batch, which means that it uses
-    all the data points and makes it slow to process a lot of data 
+    all the data points and makes it slow to process a lot of data
     points.
 
 
-    Parameters: 
+    Parameters:
     ----------
     |------|
 
@@ -116,12 +113,12 @@ class MiniBatchLinearRegression(FullBatchLinearRegression):
     score : parameters -> (X, y)
         X : array-like
             feature matrix
-        y : array-like 
+        y : array-like
             target vector
 
     """
 
-    def __init__(self, num_batch, shuffle=True, random_state=42, how='mean'):
+    def __init__(self, num_batch, shuffle=True, random_state=42, how="mean"):
         self.num_batch = num_batch
         self.shuffle = shuffle
         self.random_state = random_state
@@ -132,7 +129,9 @@ class MiniBatchLinearRegression(FullBatchLinearRegression):
         np.random.seed(self.random_state)
         # creating index batch
         if self.shuffle:
-            index_batch = np.array_split(np.random.permutation(X.shape[0]), self.num_batch)
+            index_batch = np.array_split(
+                np.random.permutation(X.shape[0]), self.num_batch
+            )
         else:
             index_batch = np.array_split(np.arange(X.shape[0]), self.num_batch)
         # instantiate weights matrix and bias vector, containing weights and bias \
@@ -152,11 +151,11 @@ class MiniBatchLinearRegression(FullBatchLinearRegression):
         weights_mat = weights_mat[1:]
         bias_vec = bias_vec[1:]
         # how to aggregate the weights matrix and bias vector
-        if self.how == 'mean':
+        if self.how == "mean":
             # assign it as instance variable
             self.weights_ = np.median(weights_mat, axis=0)
             self.bias_ = np.median(bias_vec)
-        elif self.how == 'median':
+        elif self.how == "median":
             self.weights_ = np.mean(weights_mat, axis=0)
             self.bias_ = np.mean(bias_vec)
 
