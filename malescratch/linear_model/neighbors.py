@@ -10,7 +10,7 @@ class KNNBase(object):
         self.order = order
 
     def fit(self, X, y):
-        if self.scaler == None:
+        if self.scaler is None:
             self._X = X
         elif self.scaler == "minmax":
             self._scaler = MinMaxScaler()
