@@ -1,5 +1,5 @@
-import numpy as np
 import math
+import numpy as np
 import MinMaxScaler, StandardScaler, make_batch_index, r2_score, to_categorical
 
 
@@ -60,8 +60,13 @@ class LinearRegression(Regression):
         self.regularization = regularization
         self.alpha = alpha
 
+        self._weights = None
+        self.weights_ = None
+        self.bias_ = None
+
     def fit(self, X, y):
         X = np.c_[np.ones(X.shape[0]), X]
+
         # Calculate weights by least squares (using Moore-Penrose pseudoinverse)
         if self.regularization:
             regularization_mat = np.eye(X.shape[1])
@@ -106,16 +111,20 @@ class BatchGDRegressor(Regression):
             self._regularization = l1_l2_regularization(
                 alpha=self.alpha, l1_ratio=self.l1_ratio
             )
-        elif penalty == None:
+        elif penalty is None:
             self._regularization = lambda x: 0
             self._regularization.grad = lambda x: 0
+
+        self.weights_ = None
+        self.bias_ = None
+        self.loss_vals_ = None
 
     def _weights_init(self, n_features):
         lim = 1 / math.sqrt(n_features)
         self._weights = np.random.uniform(-lim, lim, size=(n_features, 1))
 
     def fit(self, X, y):
-        if self.num_batch == None:
+        if self.num_batch is None:
             self.num_batch = int(X.shape[0] / 20)
         X = np.c_[np.ones(X.shape[0]), X]
         y = y.reshape(-1, 1)

@@ -44,7 +44,6 @@ class GradientDescentRegressor:
         return y_pred
 
     def _calculate_gradient(self, X, y):
-
         gradient = np.empty(X.shape[1])
         for i in range(len(gradient)):
             summa = 0
@@ -59,6 +58,7 @@ class GradientDescentRegressor:
         gradient = 0
         for j in range(X.shape[0]):
             gradient = gradient + (np.matmul(X[j], self.weights_) - y[j])
+
         return gradient / X.shape[0]
 
     def get_weights(self):
