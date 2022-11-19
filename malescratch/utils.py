@@ -25,6 +25,11 @@ def train_test_split(
 
     splitting : list, length=2 * len(arrays)
         List containing train-test split of inputs.
+
+    Examples
+    --------
+    >>> from malescratch.utils import train_test_split
+    >>> X_train, X_test, y_train, y_test = train_test_split(X, y)
     """
 
     seed = np.random.RandomState(random_state)

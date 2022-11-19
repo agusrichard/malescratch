@@ -3,7 +3,6 @@ import numpy as np
 
 
 class FullBatchLinearRegression:
-
     """Imitation of LinearRegression estimator from sklearn.
     It doesn't take any parameters or hyperparameters.
     This estimator will use full-batch, which means that it uses

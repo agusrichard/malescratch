@@ -44,6 +44,7 @@ def test_positive_check_all_numbers_exist():
         y_test
     ), "y_train and y_test should have the same elements as X"
 
+def test_negative_
 
 def test_negative_shpuld_accept_list():
     x = list(range(10))
