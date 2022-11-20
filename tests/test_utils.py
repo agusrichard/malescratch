@@ -9,7 +9,7 @@ from malescratch.utils import (
 )
 
 
-def test_positive_assert_type_train_test_split():
+def test_positive_train_test_split_assert_type():
     X = np.random.randint(0, 10, size=(100, 10))
     y = np.random.randint(0, 10, size=(100,))
     X_train, X_test, y_train, y_test = train_test_split(X, y)
@@ -20,7 +20,7 @@ def test_positive_assert_type_train_test_split():
     assert type(y_test) == np.ndarray, "y_test should have type np.ndarray"
 
 
-def test_positive_assert_length_train_test_split():
+def test_positive_train_test_split_assert_length_using_default_test_size():
     X = np.random.randint(0, 10, size=(100, 10))
     y = np.random.randint(0, 10, size=(100,))
     X_train, X_test, y_train, y_test = train_test_split(X, y)
@@ -31,7 +31,7 @@ def test_positive_assert_length_train_test_split():
     assert y_test.shape == (10,), "y_test should have the same of (10,)"
 
 
-def test_positive_check_all_numbers_exist():
+def test_positive_train_test_split_check_all_numbers_exist():
     X = np.arange(0, 10)
     y = np.arange(0, 10)
 
@@ -44,27 +44,46 @@ def test_positive_check_all_numbers_exist():
         y_test
     ), "y_train and y_test should have the same elements as X"
 
-def test_negative_
 
-def test_negative_shpuld_accept_list():
-    x = list(range(10))
-    x_train, x_test = train_test_split(x)
+def test_positive_train_test_split_train_size_int():
+    X = np.random.randint(0, 10, 1000).reshape((200, 5))
+    y = np.random.randint(0, 10, 1000)
 
-    assert (
-        type(x_train) == np.ndarray
-    ), "train_test_split should accept list object and return np.ndarray object"
-    assert (
-        type(x_test) == np.ndarray
-    ), "train_test_split should accept list object and return np.ndarray object"
+    X_train, _, y_train, _ = train_test_split(X, y, train_size=150)
+
+    assert len(X_train) == 150, "length of X_train should be 150"
+    assert len(y_train) == 150, "length of y_train should be 150"
 
 
-def test_positive_make_batch_index():
-    pass
+def test_positive_train_test_split_test_size_int():
+    X = np.random.randint(0, 10, 1000).reshape((200, 5))
+    y = np.random.randint(0, 10, 1000)
+
+    _, X_test, _, y_test = train_test_split(X, y, test_size=40)
+
+    assert len(X_train) == 40, "length of X_train should be 40"
+    assert len(y_train) == 40, "length of y_train should be 40"
 
 
-def test_to_categorical():
-    pass
-
-
-def test_MinMaxScaler():
-    pass
+# def test_negative_shpuld_accept_list():
+#     x = list(range(10))
+#     x_train, x_test = train_test_split(x)
+#
+#     assert (
+#         type(x_train) == np.ndarray
+#     ), "train_test_split should accept list object and return np.ndarray object"
+#     assert (
+#         type(x_test) == np.ndarray
+#     ), "train_test_split should accept list object and return np.ndarray object"
+#
+#
+# def test_positive_make_batch_index():
+#     pass
+#
+#
+# def test_to_categorical():
+#     pass
+#
+#
+# def test_MinMaxScaler():
+#     pass
