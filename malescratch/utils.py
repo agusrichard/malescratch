@@ -34,16 +34,24 @@ def train_test_split(
         >>> from malescratch.utils import train_test_split
         >>> X_train, X_test, y_train, y_test = train_test_split(X, y)
     """
+    default_test_ratio = 0.1
+    exact_size = int(len(arrays[0]) * float(default_test_ratio))
+
+    if type(train_size) == float and train_size <= 1.0:
+        exact_size = int(len(arrays[0]) * float(train_size))
+    elif type(test_size) == float and test_size <= 1.0:
+        exact_size = int(len(arrays[0]) * float(train_size))
+    else:
+        exact_size = int(train_size)
 
     seed = np.random.RandomState(random_state)
     index = seed.permutation(np.arange(len(arrays[0])))
-    test_size = int(len(arrays[0]) * float(test_ratio))
 
     def wrapper():
         for array in arrays:
             array = np.array(array)
-            test_index = index[:test_size]
-            train_index = index[test_size:]
+            test_index = index[:exact_size]
+            train_index = index[exact_size:]
             test = array[test_index]
             train = array[train_index]
             yield train
