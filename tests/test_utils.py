@@ -9,6 +9,16 @@ from malescratch.utils import (
 )
 
 
+def test_experiment():
+    X = np.random.randint(0, 10, 1000).reshape((200, 5))
+    y = np.random.randint(0, 10, 1000)
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=120)
+
+    print(X_train.shape)
+    print(X_test.shape)
+
+
 def test_positive_train_test_split_assert_type():
     X = np.random.randint(0, 10, size=(100, 10))
     y = np.random.randint(0, 10, size=(100,))
@@ -55,14 +65,14 @@ def test_positive_train_test_split_train_size_int():
     assert len(y_train) == 150, "length of y_train should be 150"
 
 
-def test_positive_train_test_split_test_size_int():
-    X = np.random.randint(0, 10, 1000).reshape((200, 5))
-    y = np.random.randint(0, 10, 1000)
-
-    _, X_test, _, y_test = train_test_split(X, y, test_size=40)
-
-    assert len(X_train) == 40, "length of X_train should be 40"
-    assert len(y_train) == 40, "length of y_train should be 40"
+# def test_positive_train_test_split_test_size_int():
+#     X = np.random.randint(0, 10, 1000).reshape((200, 5))
+#     y = np.random.randint(0, 10, 1000)
+#
+#     _, X_test, _, y_test = train_test_split(X, y, test_size=40)
+#
+#     assert len(X_train) == 40, "length of X_train should be 40"
+#     assert len(y_train) == 40, "length of y_train should be 40"
 
 
 # def test_negative_shpuld_accept_list():

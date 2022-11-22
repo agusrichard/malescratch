@@ -40,9 +40,11 @@ def train_test_split(
     if type(train_size) == float and train_size <= 1.0:
         exact_size = int(len(arrays[0]) * float(train_size))
     elif type(test_size) == float and test_size <= 1.0:
-        exact_size = int(len(arrays[0]) * float(train_size))
-    else:
-        exact_size = int(train_size)
+        exact_size = int(len(arrays[0]) * float(test_size))
+    elif train_size is not None:
+        exact_size = int(len(arrays[0]) - int(train_size))
+    elif test_size is not None:
+        exact_size = int(len(arrays[0]) - int(test_size))
 
     seed = np.random.RandomState(random_state)
     index = seed.permutation(np.arange(len(arrays[0])))
