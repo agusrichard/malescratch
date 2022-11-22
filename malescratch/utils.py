@@ -34,17 +34,20 @@ def train_test_split(
         >>> from malescratch.utils import train_test_split
         >>> X_train, X_test, y_train, y_test = train_test_split(X, y)
     """
-    default_test_ratio = 0.1
-    exact_size = int(len(arrays[0]) * float(default_test_ratio))
+    should_swap_train_test = False
+    default_train_ratio = 0.9
+    exact_size = int(len(arrays[0]) * float(default_train_ratio))
 
     if type(train_size) == float and train_size <= 1.0:
         exact_size = int(len(arrays[0]) * float(train_size))
     elif type(test_size) == float and test_size <= 1.0:
+        should_swap_train_test = True
         exact_size = int(len(arrays[0]) * float(test_size))
     elif train_size is not None:
-        exact_size = int(len(arrays[0]) - int(train_size))
+        exact_size = int(train_size)
     elif test_size is not None:
-        exact_size = int(len(arrays[0]) - int(test_size))
+        should_swap_train_test = True
+        exact_size = int(test_size)
 
     seed = np.random.RandomState(random_state)
     index = seed.permutation(np.arange(len(arrays[0])))
@@ -52,12 +55,16 @@ def train_test_split(
     def wrapper():
         for array in arrays:
             array = np.array(array)
-            test_index = index[:exact_size]
-            train_index = index[exact_size:]
-            test = array[test_index]
-            train = array[train_index]
-            yield train
-            yield test
+            train_indexes = index[:exact_size]
+            test_indexes = index[exact_size:]
+            train_arr = array[train_indexes]
+            test_arr = array[test_indexes]
+
+            if should_swap_train_test:
+                train_arr, test_arr = test_arr, train_arr
+
+            yield train_arr
+            yield test_arr
 
     return tuple(wrapper())
 
