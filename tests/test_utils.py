@@ -95,25 +95,25 @@ def test_positive_train_test_split_test_size_float():
     assert len(y_test) == 20, "length of y_test should be 20"
 
 
-# def test_negative_shpuld_accept_list():
-#     x = list(range(10))
-#     x_train, x_test = train_test_split(x)
-#
-#     assert (
-#         type(x_train) == np.ndarray
-#     ), "train_test_split should accept list object and return np.ndarray object"
-#     assert (
-#         type(x_test) == np.ndarray
-#     ), "train_test_split should accept list object and return np.ndarray object"
-#
-#
-# def test_positive_make_batch_index():
-#     pass
-#
-#
-# def test_to_categorical():
-#     pass
-#
-#
-# def test_MinMaxScaler():
-#     pass
+def test_negative_shpuld_accept_list():
+    x = list(range(10))
+    x_train, x_test = train_test_split(x)
+
+    assert (
+        type(x_train) == np.ndarray
+    ), "train_test_split should accept list object and return np.ndarray object"
+    assert (
+        type(x_test) == np.ndarray
+    ), "train_test_split should accept list object and return np.ndarray object"
+
+
+def test_positive_make_batch_index():
+    pass
+
+
+def test_to_categorical():
+    pass
+
+
+def test_MinMaxScaler():
+    pass
