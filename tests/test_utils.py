@@ -108,7 +108,9 @@ def test_negative_shpuld_accept_list():
 
 
 def test_positive_make_batch_index():
-    pass
+    batch_index = make_batch_index(100, 20, 100)
+    for batch in batch_index:
+        print(batch)
 
 
 def test_to_categorical():

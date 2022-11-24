@@ -69,7 +69,9 @@ def train_test_split(
     return tuple(wrapper())
 
 
-def make_batch_index(sample_size, num_batch, size, shuffle=False, random_state=42):
+def make_batch_index(
+    sample_size, num_batch, size, shuffle=False, random_state=42
+) -> List[np.ndarray]:
     """Make batch index for further batch making process
 
     Parameters:
