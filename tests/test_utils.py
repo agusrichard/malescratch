@@ -111,11 +111,3 @@ def test_positive_make_batch_index():
     batch_index = make_batch_index(100, 20, 100)
     for batch in batch_index:
         print(batch)
-
-
-def test_to_categorical():
-    pass
-
-
-def test_MinMaxScaler():
-    pass
