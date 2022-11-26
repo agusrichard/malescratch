@@ -107,7 +107,8 @@ def test_negative_shpuld_accept_list():
     ), "train_test_split should accept list object and return np.ndarray object"
 
 
-def test_positive_make_batch_index():
-    batch_index = make_batch_index(100, 20, 100)
-    for batch in batch_index:
-        print(batch)
+def test_positive_make_batch_index_check_len_batch():
+    n_batches = 10
+    batches = make_batch_index(100, n_batches, 100)
+
+    assert len(batches) == 10, "number of batches should be 10"
