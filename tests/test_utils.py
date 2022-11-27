@@ -108,7 +108,7 @@ def test_negative_shpuld_accept_list():
 
 
 def test_positive_make_batch_index_check_len_batch():
-    n_batches = 10
+    n_batches = 5
     batches = make_batch_index(100, n_batches, 100)
 
-    assert len(batches) == 10, "number of batches should be 10"
+    assert len(batches) == n_batches, "number of batches should be 10"
