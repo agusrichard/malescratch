@@ -112,3 +112,7 @@ def test_positive_make_batch_index_check_len_batch():
     batches = make_batch_index(100, n_batches, 100)
 
     assert len(batches) == n_batches, "number of batches should be 10"
+
+
+def test_positive_make_batch_index():
+    pass
