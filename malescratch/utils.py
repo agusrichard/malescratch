@@ -31,6 +31,7 @@ def train_test_split(
 
         Examples
         --------
+
         >>> from malescratch.utils import train_test_split
         >>> X_train, X_test, y_train, y_test = train_test_split(X, y)
     """
@@ -78,7 +79,7 @@ def make_batch_index(
     ----------
 
     sample_size : integer
-        Sample size
+        Sample size / maximum value for index
 
     num_batch : integer
         Number of batch
@@ -94,7 +95,18 @@ def make_batch_index(
         Random state seed
 
     Returns:
-        Batch index
+    -------
+
+    batches of indexes: list[ndarray]
+        list of batches indexes
+
+
+    Examples
+    --------
+    >>> n_batches = 5
+    >>> batches = make_batch_index(100, n_batches, 10)
+    >>> for batch in batches:
+    >>>         model.fit(X[batch])
     """
 
     gen = np.random.RandomState(random_state)

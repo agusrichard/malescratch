@@ -114,6 +114,25 @@ def test_positive_make_batch_index_check_len_batch():
     assert len(batches) == n_batches, "number of batches should be 10"
 
 
+def test_positive_make_batch_index_check_type():
+    n_batches = 5
+    batches = make_batch_index(100, n_batches, 100)
+
+    for batch in batches:
+        assert type(batch) == np.ndarray, "batch index should be a type of ndarray"
+
+
+def test_positive_make_batch_index_check_len_each_batch():
+    n_batches = 5
+    batches = make_batch_index(100, n_batches, 100)
+
+    for batch in batches:
+        assert len(batch) == 20, "each batch shpuld have a length of 20"
+
+
 def test_positive_make_batch_index():
-    print("Aun Aprendo")
-    pass
+    n_batches = 5
+    batches = make_batch_index(100, n_batches, 10)
+
+    for batch in batches:
+        print("batch", batch)
