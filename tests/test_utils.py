@@ -127,7 +127,7 @@ def test_positive_make_batch_index_check_len_each_batch():
     batches = make_batch_index(100, n_batches, 100)
 
     for batch in batches:
-        assert len(batch) == 20, "each batch shpuld have a length of 20"
+        assert len(batch) == 20, "each batch should have a length of 20"
 
 
 def test_positive_make_batch_index():
