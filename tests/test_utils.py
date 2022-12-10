@@ -135,4 +135,4 @@ def test_positive_make_batch_index():
     batches = make_batch_index(100, n_batches, 10)
 
     for batch in batches:
-        pass
+        print("we'll think about that tonight or tomorrow")
